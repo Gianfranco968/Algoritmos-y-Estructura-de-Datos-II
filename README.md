@@ -1,4 +1,4 @@
-# TPO-Paradigma-Orientado-A-Objetos
+# TPO-Algoritmos y Estructura de Datos II
 Trabajo práctico integrador - UADE
 Integrantes:
     - Bottinelli, Rocío
