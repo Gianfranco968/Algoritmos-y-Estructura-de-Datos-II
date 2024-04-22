@@ -3,7 +3,7 @@
 
 package TPO;
 	
-public class ColaTDA {
+public class ColaTDA implements InterfazCola {
 	
 	class Elemento {
 		int valor;
@@ -12,11 +12,13 @@ public class ColaTDA {
 	Elemento[] elementos;
 	int indice;
 	
+	@Override
 	public void InicializarCola() {
 		indice = 0;
 		elementos = new Elemento[100];
 	}
 	
+	@Override
 	public void AcolarPrioridad(int x, int prioridad) {
 		int j = indice;
 		
@@ -31,19 +33,23 @@ public class ColaTDA {
 		indice++;
 	}
 	
+	@Override
 	public void Desacolar() {
 		elementos[indice-1] = null;
 		indice--;
 	}
 	
+	@Override
 	public int Primero() {
 		return elementos[indice-1].valor;
 	}
 	
+	@Override
 	public boolean ColaVacia() {
 		return (indice == 0);
 	}
 	
+	@Override
 	public int Prioridad() {
 		return elementos[indice-1].prioridad;
 	}
