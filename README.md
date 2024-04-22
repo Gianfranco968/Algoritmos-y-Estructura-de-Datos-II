@@ -3,5 +3,5 @@ Trabajo práctico integrador - UADE
 Integrantes:
     - Bottinelli, Rocío
     - Giorgetta, Agustina
-    - Lescuenis, Tomás
+    - Lecuenis, Tomás
     - Mazzei, Gianfranco
