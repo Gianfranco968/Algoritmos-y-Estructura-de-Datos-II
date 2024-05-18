@@ -2,10 +2,12 @@
 
 package TPO;
 
-public class TDA_Conjunto {
+public class TDA_Conjunto implements InterfazConjunto{
+	
 	int[] a;
 	int cantidad;
 	
+	@Override
 	public void Agregar(int x) {
 		if (!this.Pertenece(x)) {
 			a[cantidad] = x;
@@ -13,19 +15,23 @@ public class TDA_Conjunto {
 		}
 	}
 	
+	@Override
 	public boolean ConjuntoVacio() {
 		return cantidad == 0;
 	}
 	
+	@Override
 	public int Elegir() {
 		return a[cantidad-1];
 	}
 	
+	@Override
 	public void InicializarConjunto() {
 		a = new int[100];
 		cantidad = 0;
 	}
 	
+	@Override
 	public boolean Pertenece(int x) {
 		int i=0;
 		while (i<cantidad && a[i]!=x) {
@@ -34,6 +40,7 @@ public class TDA_Conjunto {
 		return (i<cantidad);
 	}
 	
+	@Override
 	public void Sacar(int x) {
 		int i=0;
 		while (i<cantidad && a[i]!=x) {
