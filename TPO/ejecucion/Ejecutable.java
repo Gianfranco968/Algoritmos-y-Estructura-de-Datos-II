@@ -60,7 +60,8 @@ public class Ejecutable {
 
 		// Solicitamos al usuario introducir un ID y una Prioridad por cliente
         while (verificarID) {
-            System.out.print("Ingrese el ID del cliente [Para generar el informe ingrese 0]: ");
+            System.out.print("\nIngrese el ID del cliente [Para generar el informe ingrese 0]: ");
+            
             int id = leer.nextInt();
 
             if (id != 0) { // con 0 finaliza el bucle de carga de datos
@@ -70,11 +71,11 @@ public class Ejecutable {
                     // si es correcto, lo agrega a la cola, si NO lo es, lo vuelve a pedir
                     while (rangoPrioridad) {
                         System.out.print(
-                                "Ingrese por número la prioridad de dicho cliente [Empresa (1) | Particular cliente (2) | Particular no cliente (3)]: ");
+                                "Ingrese por número la prioridad de dicho cliente [E (1) | PC (2) | PNC (3)]: ");
                         int prioridad = leer.nextInt();
 
                         if (prioridad < 1 || prioridad > 3) {
-                            System.out.println("Valor inválido. Las prioridades pueden ser [1,2,3].");
+                            System.out.println("Valor inválido. Las prioridades pueden ser [1,2,3].\n");
                         } else {
                             cant++;
                             Cola.AcolarPrioridad(id, prioridad);
