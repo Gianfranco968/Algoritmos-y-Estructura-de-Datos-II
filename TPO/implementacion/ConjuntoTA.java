@@ -11,7 +11,7 @@ public class ConjuntoTA implements ConjuntoTDA {
 	public void InicializarConjunto() {
 		a = new int[100];
 		cantidad = 0;
-	}
+	}  // O(1) -> Costo constante
 
 	@Override
 	public void Agregar(int x) {
@@ -19,7 +19,7 @@ public class ConjuntoTA implements ConjuntoTDA {
 			a[cantidad] = x;
 			cantidad++;
 		}
-	}
+	} // O(n) -> Costo lineal
 
 	@Override
 	public void Sacar(int x) {
@@ -31,7 +31,7 @@ public class ConjuntoTA implements ConjuntoTDA {
 			a[i] = a[cantidad-1];
 			cantidad--;
 		}
-	}
+	} // O(n) -> Costo lineal
 
 	@Override
 	public boolean Pertenece(int x) {
@@ -40,16 +40,16 @@ public class ConjuntoTA implements ConjuntoTDA {
 			i++;
 		}
 		return (i<cantidad);
-	}
+	} // O(n) -> Costo lineal
 
 	@Override
 	public int Elegir() {
 		return a[cantidad-1];
-	}
+	} // O(1) -> Costo constante
 
 	@Override
 	public boolean ConjuntoVacio() {
 		return cantidad == 0;
-	}
+	} // O(1) -> Costo constante
 
 }

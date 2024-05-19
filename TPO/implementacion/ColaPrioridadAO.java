@@ -15,7 +15,7 @@ public class ColaPrioridadAO implements ColaPrioridadTDA {
 	public void InicializarCola() {
 		indice = 0;
 		elementos = new Elemento[100];
-	}
+	} // O(1) -> Costo constante
 
 	@Override
 	public void AcolarPrioridad(int x, int prioridad) {
@@ -30,27 +30,27 @@ public class ColaPrioridadAO implements ColaPrioridadTDA {
 		elementos[j].valor = x;
 		elementos[j].prioridad = prioridad;
 		indice++;
-	}
+	}  // O(n) -> Costo lineal
 
 	@Override
 	public void Desacolar() {
 		elementos[indice-1] = null;
 		indice--;
-	}
+	} // O(1) -> Costo constante
 
 	@Override
 	public int Primero() {
 		return elementos[indice-1].valor;
-	}
+	}  // O(1) -> Costo constante
 
 	@Override
 	public boolean ColaVacia() {
 		return (indice == 0);
-	}
+	}  // O(1) -> Costo constante
 
 	@Override
 	public int Prioridad() {
 		return elementos[indice-1].prioridad;
-	}
+	}  // O(1) -> Costo constante
 
 }
