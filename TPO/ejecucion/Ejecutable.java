@@ -1,5 +1,6 @@
 package ejecucion;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import api.ConjuntoTDA;
@@ -32,6 +33,8 @@ public class Ejecutable {
 		ConjuntoTA ConjuntoEmpresa = new ConjuntoTA();
 		ConjuntoTA ConjuntoParticularCliente = new ConjuntoTA();
 		ConjuntoTA ConjuntoParticularNoCliente = new ConjuntoTA();
+		ArrayList<Integer> listaIDs = new ArrayList<>(); // Para verificar que no se repitan los IDs de clientes
+															// cargados
 
 		// Inicializo la cola de prioridades y las de conjuntos
 		System.out.println("Inicializando la cola de prioridades y los conjuntos...");
@@ -49,42 +52,50 @@ public class Ejecutable {
 
 		for (int[] dato : datosDePrueba) {
 			Cola.AcolarPrioridad(dato[0], dato[1]);
+			listaIDs.add(dato[0]);
 			cant++;
 		}
 
 		Scanner leer = new Scanner(System.in);
 
 		// Solicitamos al usuario introducir un ID y una Prioridad por cliente
-		while (verificarID) {
-			System.out.print("Ingrese el ID del cliente [Para finalizar el programa ingrese 0]: ");
-			int id = leer.nextInt();
+        while (verificarID) {
+            System.out.print("Ingrese el ID del cliente [Para generar el informe ingrese 0]: ");
+            int id = leer.nextInt();
 
-			if (id != 0) { // con 0 finaliza el bucle de carga de datos
-				// pide el ingreso de una prioridad y comprueba que esta misma este en los
-				// parametros establecidos
-				// si es correcto, lo agrega a la cola, si NO lo es, lo vuelve a pedir
-				while (rangoPrioridad) {
-					System.out.print(
-							"Ingrese por número la prioridad de dicho cliente [Empresa (1) | Particular cliente (2) | Particular no cliente (3)]: ");
-					int prioridad = leer.nextInt();
+            if (id != 0) { // con 0 finaliza el bucle de carga de datos
+                if (!listaIDs.contains(id)) {
+                    // pide el ingreso de una prioridad y comprueba que esta misma este en los
+                    // parametros establecidos
+                    // si es correcto, lo agrega a la cola, si NO lo es, lo vuelve a pedir
+                    while (rangoPrioridad) {
+                        System.out.print(
+                                "Ingrese por número la prioridad de dicho cliente [Empresa (1) | Particular cliente (2) | Particular no cliente (3)]: ");
+                        int prioridad = leer.nextInt();
 
-					if (prioridad < 1 || prioridad > 3) {
-						System.out.println("Valor inválido. Las prioridades pueden ser [1,2,3].");
-					} else {
-						cant++;
-						Cola.AcolarPrioridad(id, prioridad);
-						rangoPrioridad = false;
-					}
-				}
-				rangoPrioridad = true;
-			} else { // Si finaliza la carga comprobamos que hayan minimo 15 elementos(clientes)
-				if (cant < 15) {
-					System.out.println("Debe haber al menos 15 elementos!");
-				} else {
-					verificarID = false;
-				}
-			}
-		}
+                        if (prioridad < 1 || prioridad > 3) {
+                            System.out.println("Valor inválido. Las prioridades pueden ser [1,2,3].");
+                        } else {
+                            cant++;
+                            Cola.AcolarPrioridad(id, prioridad);
+                            listaIDs.add(id);  // Agrega el ID al ArrayList con los IDs
+                            rangoPrioridad = false;
+                        }
+                    }
+                    rangoPrioridad = true;
+                } else {
+                    System.out.println("El ID " + id + " ya está registrado. Ingrese un ID diferente.");
+                }
+            } else { // Si finaliza la carga comprobamos que hayan mínimo 15 elementos cargados
+                if (cant < 15) {
+                    System.out.println("Deben cargarse al menos 15 clientes para generar el informe!");
+                    System.out.println("Cantidad de clientes cargados: " + cant);
+                } else {
+                    verificarID = false;
+                }
+            }
+        }
+
 
 		// Verifica el tipo de prioridad para cargarlo al Conjunto correspondiente
 		// Devolucion segun el tipo
