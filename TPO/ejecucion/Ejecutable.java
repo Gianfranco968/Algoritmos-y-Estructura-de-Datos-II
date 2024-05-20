@@ -23,7 +23,7 @@ public class Ejecutable {
 				System.out.print("; ");
 			}
 		}
-	}
+	} // O(n) -> Complejidad lineal
 
 	public static void main(String[] args) {
 		boolean verificarID = true;
@@ -103,7 +103,7 @@ public class Ejecutable {
 				System.out.println("Entrada inválida. Por favor, ingrese un número.");
 				leer.next(); // Limpiar la entrada inválida
 			}
-		}
+		} // O(n^2) -> Complejidad cuadrática
 
 		// Verifica el tipo de prioridad para cargarlo al Conjunto correspondiente
 		// Devolucion segun el tipo
@@ -117,7 +117,7 @@ public class Ejecutable {
 				ConjuntoParticularNoCliente.Agregar(Cola.Primero());
 			}
 			Cola.Desacolar();
-		}
+		} // O(n) -> Complejidad lineal
 
 		leer.close();
 
@@ -143,6 +143,6 @@ public class Ejecutable {
 		System.out.println();
 		System.out.println("------------------------------------------------------------");
 
-	}
+	} // O(n^2) -> Complejidad cuadrática
 
 }
